@@ -1,5 +1,15 @@
 import { Type } from 'class-transformer';
-import { ArrayMinSize, IsArray, IsDefined, IsEmail, IsNotEmptyObject, IsNumberString, IsOptional, IsString, Length, MinLength, ValidateNested } from 'class-validator';
+import {
+  ArrayMinSize,
+  IsArray,
+  IsEmail,
+  IsNotEmptyObject,
+  IsNumberString,
+  IsOptional,
+  IsString,
+  MinLength,
+  ValidateNested,
+} from 'class-validator';
 import { EducationDto } from 'src/shared/dtos/education.dto';
 import { Experience } from 'src/shared/dtos/experience.dto';
 import { ResidenceDto } from 'src/shared/dtos/Residence.dto';
@@ -17,6 +27,7 @@ export class CreateCurriculumVitaeDto {
   @IsEmail()
   email: string;
 
+  @IsNotEmptyObject()
   @ValidateNested()
   @Type(() => ResidenceDto)
   residence: ResidenceDto;
@@ -24,19 +35,20 @@ export class CreateCurriculumVitaeDto {
   @ValidateNested()
   @Type(() => SocialMediaLinks)
   @IsOptional()
-  profesionalLinks: SocialMediaLinks;
+  profesionalLinks?: SocialMediaLinks;
 
   @IsString()
   resume: string;
 
-  @ValidateNested({each: true})
+  @ValidateNested({ each: true })
   @Type(() => Experience)
   @ArrayMinSize(1)
   @IsArray()
   workExperience: Experience[];
 
-  @IsNotEmptyObject()
-  @ValidateNested()
+  @ValidateNested({ each: true })
+  @ArrayMinSize(1)
+  @IsArray()
   @Type(() => EducationDto)
-  education: EducationDto;
+  education: EducationDto[];
 }

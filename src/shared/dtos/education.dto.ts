@@ -9,5 +9,5 @@ export class EducationDto {
   graduationDate: string;
   @IsIn(['curso', 'titulo'])
   @IsString()
-  type: string;
+  type: 'curso' | 'titulo';
 }

@@ -9,9 +9,9 @@ export class Experience {
   @IsString()
   startDate: string;
   @IsOptional()
-  endDate: string;
+  endDate?: string;
 
   @IsString({ each: true })
   @IsOptional()
-  achievements: string[];
+  achievements?: string[];
 }

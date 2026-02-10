@@ -5,6 +5,7 @@ import { UpdateCurriculumVitaeDto } from './dto/update-curriculum-vitae.dto';
 @Injectable()
 export class CurriculumVitaeService {
   create(createCurriculumVitaeDto: CreateCurriculumVitaeDto) {
+    console.log(createCurriculumVitaeDto);
     return 'This action adds a new curriculumVitae';
   }
 
