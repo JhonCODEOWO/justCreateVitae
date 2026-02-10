@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Res } from '@nestjs/common';
 import { CurriculumVitaeService } from './curriculum-vitae.service';
 import { CreateCurriculumVitaeDto } from './dto/create-curriculum-vitae.dto';
 import { UpdateCurriculumVitaeDto } from './dto/update-curriculum-vitae.dto';
+import type { Response } from 'express';
 
 @Controller('curriculum-vitae')
 export class CurriculumVitaeController {
@@ -10,8 +11,20 @@ export class CurriculumVitaeController {
   ) {}
 
   @Post()
-  create(@Body() createCurriculumVitaeDto: CreateCurriculumVitaeDto) {
-    return this.curriculumVitaeService.create(createCurriculumVitaeDto);
+  async create(
+    @Res() response: Response,
+    @Body() createCurriculumVitaeDto: CreateCurriculumVitaeDto,
+  ) {
+    const buffer = await this.curriculumVitaeService.create(
+      createCurriculumVitaeDto,
+    );
+    response.set({
+      'Content-Type': 'application/pdf',
+      'Content-Disposition': `attachment; filename=${createCurriculumVitaeDto.fullname}-${Date.now()}.pdf`,
+      'Content-Length': buffer.length,
+    });
+
+    response.end(buffer);
   }
 
   @Get()

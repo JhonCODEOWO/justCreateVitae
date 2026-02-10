@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/example.css">
+    <style>
+        
+    </style>
+</head>
+
+<body>
+    <h1>{{fullname}}</h1>
+    <div>
+        <h3>{{email}} - {{phoneNumber}} - {{residence.country}}, {{residence.city}}</h3>
+        <a href="{{professionalLinks.linkedIn}}">LinkedIn</a>
+    </div>
+    <h2>Perfil Profesional</h2>
+    <div class="divider"></div>
+    {{resume}}
+    <h2>Experiencia</h2>
+    {{#each workExperience}}
+    <div>
+        <p>{{companyName}}</p>
+        <p>{{occupation}}</p>
+        <p>{{startDate}}</p>
+        <p>{{endDate}}</p>
+        {{#if achievements}}
+        <ul>
+            {{#each achievements}}
+            <li>{{this}}</li>
+            {{/each}}
+        </ul>
+        {{/if}}
+    </div>
+    {{/each}}
+    <h2>Fortalezas</h2>
+    <h2>Estudios</h2>
+    {{#each education}}
+    <div>
+        <p>{{titleName}}</p>
+        <p>{{institutionName}}</p>
+        <p>{{graduationDate}}</p>
+        <p>Tipo de estudio: {{type}}</p>
+    </div>
+    {{/each}}
+</body>
+
+</html>
