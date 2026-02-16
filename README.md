@@ -9,6 +9,9 @@ Instead of worrying about formatting, you only need to send structured content â
 
 ---
 
+## ðŸ“¦ Incoming changes
+Now this project can create successfully PDFs in Harvard format, but i'll working on add more formats and features, wait for it soon.
+
 ## Features
 
 - Generate CVs in **Harvard format**
