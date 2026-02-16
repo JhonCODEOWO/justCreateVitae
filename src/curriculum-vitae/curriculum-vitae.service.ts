@@ -13,7 +13,7 @@ export class CurriculumVitaeService {
   ) {}
 
   async create(createCurriculumVitaeDto: CreateCurriculumVitaeDto) {
-    //Access to hbs file of the template requested
+    //Read templates content
     const templateHtml = this.templateService.getTemplate();
     const globalCss = this.templateService.getCss('GlobalStyles');
 
