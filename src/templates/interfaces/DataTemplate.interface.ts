@@ -1,5 +1,4 @@
 export interface DataTemplate {
-  globalStyles: string;
   fullname: string;
   phoneNumber: number;
   email: string;
