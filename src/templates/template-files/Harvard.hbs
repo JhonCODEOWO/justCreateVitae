@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/example.css">
+    <style>
+        {{{globalStyles}}}
+        body {
+            font-family: 'Times New Roman', serif;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        p,li{
+            font-size: 11px;
+            text-align: left;
+        }
+
+        .headerCV{
+            margin: 40px 0;
+            display: flex;
+            flex-direction: column;
+            row-gap: 15px;
+        }
+
+        .headerCV::after {
+            height: 2px;
+            width: 100%;
+            content: "";
+            background-color: black;
+        }
+
+        .contact__info {
+            font-size: 16px;
+        }
+
+        @page{
+            size: A4;
+            margin: 20mm;
+        }
+
+
+        .subtitle {
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .resume {
+            line-height: 1.4;
+        }
+
+        .subtitleInner h2{
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .date {
+            font-size: 10px;
+            font-weight: lighter;
+        }
+
+        .workExperience {
+            margin-bottom: 8px;
+        }
+        .titleWithDateInfo {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .titleWithDateInfo .subtitle {
+            font-size: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .mainElement{
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="headerCV">
+        <h1 class="text-center margin-0 padding-0">{{fullname}}</h1>
+        <h3 class="text-center margin-0 padding-0 contact__info">{{email}} - {{phoneNumber}} - {{residence}}</h3>
+    </div>
+    <h2 class="subtitle">Perfil Profesional</h2>
+    <p class="resume">{{resume}}</p>
+    <h2 class="subtitle">Experiencia</h2>
+    {{#each workExperience}}
+    <div class="mainElement">
+        <div class="titleWithDateInfo">
+            <div>
+                <h2 class="subtitle margin-0">{{companyName}}</h2>
+                <p class="margin-0">{{occupation}}</p>
+            </div>
+            <div>
+                <h3 class="date">{{startDate}}</h3>
+                <h3 class="date">{{endDate}}</h3>
+            </div>
+        </div>
+        <article>
+            {{#if achievements}}
+                <ul>
+                    {{#each achievements}}
+                    <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+            {{/if}}
+        </article>
+    </div>
+    {{/each}}
+    <h2 class="subtitle">Fortalezas</h2>
+    <h2 class="subtitle">Estudios</h2>
+    {{#each education}}
+    <div class="mainElement">
+        <div class="titleWithDateInfo">
+            <div>
+                <h2 class="subtitle margin-0 padding-0">{{institutionName}}</h2>
+                <p class="margin-0 padding-0">{{titleName}}</p>
+                <p class="margin-0 padding-0">Tipo de estudio: {{type}}</p>
+            </div>
+            <p>{{graduationDate}}</p>
+        </div>
+    </div>
+    {{/each}}
+</body>
+
+</html>

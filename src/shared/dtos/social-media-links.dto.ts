@@ -18,7 +18,6 @@ export class SocialMediaLinks {
 
   @IsUrl()
   @IsString()
-  @IsOptional()
   linkedIn?: string;
 
   @IsUrl()

@@ -1,27 +1,30 @@
 import { Injectable } from '@nestjs/common';
 import { CreateCurriculumVitaeDto } from './dto/create-curriculum-vitae.dto';
-import { UpdateCurriculumVitaeDto } from './dto/update-curriculum-vitae.dto';
+import { DataTemplate } from 'src/templates/interfaces/DataTemplate.interface';
+import { MapperTemplateData } from 'src/templates/mapper';
+import { TemplatesService } from 'src/templates/templates.service';
+import { PdfService } from 'src/pdf/pdf.service';
 
 @Injectable()
 export class CurriculumVitaeService {
-  create(createCurriculumVitaeDto: CreateCurriculumVitaeDto) {
-    console.log(createCurriculumVitaeDto);
-    return 'This action adds a new curriculumVitae';
-  }
+  constructor(
+    private readonly templateService: TemplatesService,
+    private readonly pdfService: PdfService,
+  ) {}
 
-  findAll() {
-    return `This action returns all curriculumVitae`;
-  }
+  async create(createCurriculumVitaeDto: CreateCurriculumVitaeDto) {
+    //Access to hbs file of the template requested
+    const templateHtml = this.templateService.getTemplate();
+    const globalCss = this.templateService.getCss('GlobalStyles');
 
-  findOne(id: number) {
-    return `This action returns a #${id} curriculumVitae`;
-  }
+    const pdf = await this.pdfService.createPdf<DataTemplate>({
+      data: MapperTemplateData.FromDtoToToDataTemplate(
+        createCurriculumVitaeDto,
+      ),
+      html: templateHtml,
+      css: globalCss,
+    });
 
-  update(id: number, updateCurriculumVitaeDto: UpdateCurriculumVitaeDto) {
-    return `This action updates a #${id} curriculumVitae`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} curriculumVitae`;
+    return pdf;
   }
 }

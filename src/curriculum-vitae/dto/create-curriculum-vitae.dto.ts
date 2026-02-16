@@ -7,6 +7,7 @@ import {
   IsNumberString,
   IsOptional,
   IsString,
+  MaxLength,
   MinLength,
   ValidateNested,
 } from 'class-validator';
@@ -20,6 +21,7 @@ export class CreateCurriculumVitaeDto {
   @MinLength(1)
   fullname: string;
 
+  @MaxLength(10)
   @MinLength(10)
   @IsNumberString()
   phoneNumber: string;
