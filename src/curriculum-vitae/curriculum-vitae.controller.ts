@@ -1,7 +1,6 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Res } from '@nestjs/common';
+import { Controller, Post, Body, Res } from '@nestjs/common';
 import { CurriculumVitaeService } from './curriculum-vitae.service';
 import { CreateCurriculumVitaeDto } from './dto/create-curriculum-vitae.dto';
-import { UpdateCurriculumVitaeDto } from './dto/update-curriculum-vitae.dto';
 import type { Response } from 'express';
 
 @Controller('curriculum-vitae')
@@ -25,28 +24,5 @@ export class CurriculumVitaeController {
     });
 
     response.end(buffer);
-  }
-
-  @Get()
-  findAll() {
-    return this.curriculumVitaeService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.curriculumVitaeService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(
-    @Param('id') id: string,
-    @Body() updateCurriculumVitaeDto: UpdateCurriculumVitaeDto,
-  ) {
-    return this.curriculumVitaeService.update(+id, updateCurriculumVitaeDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.curriculumVitaeService.remove(+id);
   }
 }

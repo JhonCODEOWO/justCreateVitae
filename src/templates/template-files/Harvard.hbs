@@ -7,7 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/example.css">
     <style>
-        {{{globalStyles}}}
+        {{{css}}}
         body {
             font-family: 'Times New Roman', serif;
         }
@@ -89,13 +89,13 @@
 
 <body>
     <div class="headerCV">
-        <h1 class="text-center margin-0 padding-0">{{fullname}}</h1>
-        <h3 class="text-center margin-0 padding-0 contact__info">{{email}} - {{phoneNumber}} - {{residence}}</h3>
+        <h1 class="text-center margin-0 padding-0">{{data.fullname}}</h1>
+        <h3 class="text-center margin-0 padding-0 contact__info">{{data.email}} - {{data.phoneNumber}} - {{data.residence}}</h3>
     </div>
     <h2 class="subtitle">Perfil Profesional</h2>
-    <p class="resume">{{resume}}</p>
+    <p class="resume">{{data.resume}}</p>
     <h2 class="subtitle">Experiencia</h2>
-    {{#each workExperience}}
+    {{#each data.workExperience}}
     <div class="mainElement">
         <div class="titleWithDateInfo">
             <div>
@@ -120,7 +120,7 @@
     {{/each}}
     <h2 class="subtitle">Fortalezas</h2>
     <h2 class="subtitle">Estudios</h2>
-    {{#each education}}
+    {{#each data.education}}
     <div class="mainElement">
         <div class="titleWithDateInfo">
             <div>
