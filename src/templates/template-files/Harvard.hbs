@@ -12,6 +12,10 @@
             font-family: 'Times New Roman', serif;
         }
 
+        a {
+            color: black;
+        }
+
         h1 {
             font-size: 24px;
             font-weight: bold;
@@ -84,6 +88,19 @@
         .mainElement{
             margin-bottom: 8px;
         }
+
+        .grid {
+            display: grid;
+        }
+
+        .grid-cols-4 {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .sectionSpacing {
+            margin: 40px 0 0 0;
+        }
     </style>
 </head>
 
@@ -92,46 +109,81 @@
         <h1 class="text-center margin-0 padding-0">{{data.fullname}}</h1>
         <h3 class="text-center margin-0 padding-0 contact__info">{{data.email}} - {{data.phoneNumber}} - {{data.residence}}</h3>
     </div>
-    <h2 class="subtitle">Perfil Profesional</h2>
-    <p class="resume">{{data.resume}}</p>
-    <h2 class="subtitle">Experiencia</h2>
-    {{#each data.workExperience}}
-    <div class="mainElement">
-        <div class="titleWithDateInfo">
-            <div>
-                <h2 class="subtitle margin-0">{{companyName}}</h2>
-                <p class="margin-0">{{occupation}}</p>
+    <section class="sectionSpacing">
+        <h2 class="subtitle">Perfil Profesional</h2>
+        <p class="resume">{{data.resume}}</p>
+    </section>
+
+    <section class="sectionSpacing">
+        <h2 class="subtitle">Experiencia</h2>
+        {{#each data.workExperience}}
+            <div class="mainElement">
+                <div class="titleWithDateInfo">
+                    <div>
+                        <h2 class="subtitle margin-0">{{companyName}}</h2>
+                        <p class="margin-0">{{occupation}}</p>
+                    </div>
+                    <div>
+                        <h3 class="date">{{startDate}}</h3>
+                        <h3 class="date">{{endDate}}</h3>
+                    </div>
+                </div>
+                <article>
+                    {{#if achievements}}
+                        <ul>
+                            {{#each achievements}}
+                            <li>{{this}}</li>
+                            {{/each}}
+                        </ul>
+                    {{/if}}
+                </article>
             </div>
-            <div>
-                <h3 class="date">{{startDate}}</h3>
-                <h3 class="date">{{endDate}}</h3>
+        {{/each}}
+    </section>
+    
+    <section class="sectionSpacing">
+        <h2 class="subtitle">Estudios</h2>
+        {{#each data.education}}
+        <div class="mainElement">
+            <div class="titleWithDateInfo">
+                <div>
+                    <h2 class="subtitle margin-0 padding-0">{{institutionName}}</h2>
+                    <p class="margin-0 padding-0">{{titleName}}</p>
+                    <p class="margin-0 padding-0">Tipo de estudio: {{type}}</p>
+                </div>
+                <p>{{graduationDate}}</p>
             </div>
         </div>
-        <article>
-            {{#if achievements}}
-                <ul>
-                    {{#each achievements}}
-                    <li>{{this}}</li>
-                    {{/each}}
-                </ul>
-            {{/if}}
-        </article>
-    </div>
-    {{/each}}
-    <h2 class="subtitle">Fortalezas</h2>
-    <h2 class="subtitle">Estudios</h2>
-    {{#each data.education}}
-    <div class="mainElement">
-        <div class="titleWithDateInfo">
-            <div>
-                <h2 class="subtitle margin-0 padding-0">{{institutionName}}</h2>
-                <p class="margin-0 padding-0">{{titleName}}</p>
-                <p class="margin-0 padding-0">Tipo de estudio: {{type}}</p>
+        {{/each}}
+    </section>
+    
+    {{#if data.projects}}
+        <section class="sectionSpacing">
+            <h2 class="subtitle">Proyectos destacables</h2>
+            <div class="grid grid-cols-4">
+                {{#each data.projects}}
+                    <div class="">
+                        {{#if link}}
+                            <a href={{link}}>{{title}}</a>
+                        {{else}}
+                            <h2 class="subtitle">{{title}}</h2>
+                        {{/if}}
+                        <p>{{description}}</p>
+                    </div>
+                {{/each}}
             </div>
-            <p>{{graduationDate}}</p>
-        </div>
-    </div>
-    {{/each}}
+        </section>
+    {{/if}}
+    {{#if data.languages}}
+        <h2 class="subtitle">Lenguas</h2>
+        <ul>
+            {{#each data.languages}}
+                <li>
+                    {{name}} - {{level}}
+                </li>
+            {{/each}}
+        </ul>
+    {{/if}}
 </body>
 
 </html>
