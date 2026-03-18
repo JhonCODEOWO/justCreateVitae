@@ -18,4 +18,17 @@ export interface DataTemplate {
     type: 'curso' | 'titulo';
   }[];
   residence: string;
+  skills: {
+    name: string;
+    level: number;
+  }[];
+  languages: {
+    name: string;
+    level: string;
+  }[];
+  projects: {
+    title: string;
+    description: string;
+    link?: string;
+  }[];
 }

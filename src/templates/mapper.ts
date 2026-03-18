@@ -10,6 +10,9 @@ export class MapperTemplateData {
         ? Number(dto.phoneNumber)
         : 0,
       resume: dto.resume,
+      languages: dto.languages ?? [],
+      projects: dto.projects ?? [],
+      skills: dto.skills ?? [],
       education: dto.education.map((edu) => ({
         institutionName: edu.institutionName,
         titleName: edu.titleName,
