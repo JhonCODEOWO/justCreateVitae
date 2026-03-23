@@ -1,7 +1,8 @@
-import { Controller, Post, Body, Res } from '@nestjs/common';
+import { Controller, Post, Body, Res, Query } from '@nestjs/common';
 import { CurriculumVitaeService } from './curriculum-vitae.service';
 import { CreateCurriculumVitaeDto } from './dto/create-curriculum-vitae.dto';
 import type { Response } from 'express';
+import { CreateCurriculumQueryParamsDto } from './dto/QueryParams.dto';
 
 @Controller('curriculum-vitae')
 export class CurriculumVitaeController {
@@ -13,9 +14,11 @@ export class CurriculumVitaeController {
   async create(
     @Res() response: Response,
     @Body() createCurriculumVitaeDto: CreateCurriculumVitaeDto,
+    @Query() type: CreateCurriculumQueryParamsDto,
   ) {
     const buffer = await this.curriculumVitaeService.create(
       createCurriculumVitaeDto,
+      type,
     );
     response.set({
       'Content-Type': 'application/pdf',
