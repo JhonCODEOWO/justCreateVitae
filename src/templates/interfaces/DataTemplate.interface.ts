@@ -2,6 +2,7 @@ export interface DataTemplate {
   fullname: string;
   phoneNumber: number;
   email: string;
+  mainSite?: string;
   profesionalLinks: { name: string; link: string }[];
   resume: string;
   workExperience: {

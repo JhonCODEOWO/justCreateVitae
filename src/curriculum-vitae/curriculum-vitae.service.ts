@@ -4,6 +4,7 @@ import { DataTemplate } from 'src/templates/interfaces/DataTemplate.interface';
 import { MapperTemplateData } from 'src/templates/mapper';
 import { TemplatesService } from 'src/templates/templates.service';
 import { PdfService } from 'src/pdf/pdf.service';
+import { CreateCurriculumQueryParamsDto } from './dto/QueryParams.dto';
 
 @Injectable()
 export class CurriculumVitaeService {
@@ -12,9 +13,12 @@ export class CurriculumVitaeService {
     private readonly pdfService: PdfService,
   ) {}
 
-  async create(createCurriculumVitaeDto: CreateCurriculumVitaeDto) {
+  async create(
+    createCurriculumVitaeDto: CreateCurriculumVitaeDto,
+    { type = 'Harvard' }: CreateCurriculumQueryParamsDto,
+  ) {
     //Read templates content
-    const templateHtml = this.templateService.getTemplate();
+    const templateHtml = this.templateService.getTemplate(type);
     const globalCss = this.templateService.getCss('GlobalStyles');
 
     const pdf = await this.pdfService.createPdf<DataTemplate>({

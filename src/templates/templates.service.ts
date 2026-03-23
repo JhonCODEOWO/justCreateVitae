@@ -5,6 +5,7 @@ import {
 } from '@nestjs/common';
 import { existsSync, readFileSync } from 'fs';
 import { join, resolve } from 'path';
+import { TemplateName } from './types/template-name';
 
 @Injectable()
 export class TemplatesService {
@@ -28,7 +29,7 @@ export class TemplatesService {
    * @returns A string with all contents
    */
   getTemplate(
-    templateName: 'Harvard' = 'Harvard',
+    templateName: TemplateName = 'Harvard',
     extension: 'hbs' | 'html' = 'hbs',
   ) {
     return this.readFileFrom(

@@ -10,9 +10,14 @@ export class MapperTemplateData {
         ? Number(dto.phoneNumber)
         : 0,
       resume: dto.resume,
+      mainSite: dto.profesionalLinks?.portfolioWeb,
       languages: dto.languages ?? [],
       projects: dto.projects ?? [],
-      skills: dto.skills ?? [],
+      skills:
+        dto.skills?.map((skill) => ({
+          name: skill.name,
+          level: this.generateLevelPercent(skill.level),
+        })) ?? [],
       education: dto.education.map((edu) => ({
         institutionName: edu.institutionName,
         titleName: edu.titleName,
@@ -51,5 +56,11 @@ export class MapperTemplateData {
         link: value,
         name: key,
       }));
+  }
+
+  static generateLevelPercent(levelValue: number): number {
+    const safeValue = Math.max(0, Math.min(levelValue, 5));
+    const percentValue = (safeValue * 100) / 5;
+    return percentValue;
   }
 }

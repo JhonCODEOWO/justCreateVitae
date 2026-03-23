@@ -3,6 +3,7 @@ import {
   ArrayMinSize,
   IsArray,
   IsEmail,
+  IsIn,
   IsNotEmptyObject,
   IsNumberString,
   IsOptional,
