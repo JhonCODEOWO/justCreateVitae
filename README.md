@@ -10,17 +10,7 @@ Instead of worrying about formatting, you only need to send structured content â
 ---
 
 ## ðŸ“¦ Incoming changes
-Now this project can create successfully PDFs in Harvard format, but i'll working on add more formats and features, wait for it soon.
-
-## Features
-
-- Generate CVs in **Harvard format**
-- Automatic PDF generation
-- Clean and standardized document structure
-- Built with **NestJS**
-- Designed as a learning + production-ready project
-
----
+Now this project can create successfully PDFs in two formats, but don't worry, a new templates will arrive soon.
 
 ## Why use JustCreateVitae?
 
