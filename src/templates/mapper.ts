@@ -3,8 +3,12 @@ import { DataTemplate } from './interfaces/DataTemplate.interface';
 import { SocialMediaLinks } from 'src/shared/dtos/social-media-links.dto';
 
 export class MapperTemplateData {
-  static FromDtoToToDataTemplate(dto: CreateCurriculumVitaeDto): DataTemplate {
+  static FromDtoToToDataTemplate(
+    dto: CreateCurriculumVitaeDto,
+    image: string,
+  ): DataTemplate {
     return {
+      userImg: `data:image/jpeg;base64,${image}`,
       residence: `${dto.residence.city}, ${dto.residence.country}`,
       phoneNumber: /^-?\d+(\.\d+)?$/.test(dto.phoneNumber)
         ? Number(dto.phoneNumber)

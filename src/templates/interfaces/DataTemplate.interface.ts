@@ -1,4 +1,8 @@
 export interface DataTemplate {
+  /**
+   * It contains the base64 string to implement in src elements of html.
+   */
+  userImg: string;
   fullname: string;
   phoneNumber: number;
   email: string;

@@ -15,15 +15,20 @@ export class CurriculumVitaeService {
 
   async create(
     createCurriculumVitaeDto: CreateCurriculumVitaeDto,
+    picture: Express.Multer.File,
     { type = 'Harvard' }: CreateCurriculumQueryParamsDto,
   ) {
     //Read templates content
     const templateHtml = this.templateService.getTemplate(type);
     const globalCss = this.templateService.getCss('GlobalStyles');
 
+    //Convert img to base64
+    const srcImg = picture.buffer.toString('base64');
+
     const pdf = await this.pdfService.createPdf<DataTemplate>({
       data: MapperTemplateData.FromDtoToToDataTemplate(
         createCurriculumVitaeDto,
+        srcImg,
       ),
       html: templateHtml,
       css: globalCss,
