@@ -1,10 +1,15 @@
 import { CreateCurriculumVitaeDto } from 'src/curriculum-vitae/dto/create-curriculum-vitae.dto';
 import { DataTemplate } from './interfaces/DataTemplate.interface';
 import { SocialMediaLinks } from 'src/shared/dtos/social-media-links.dto';
+import { CurriculumFormDataDto } from 'src/curriculum-vitae/dto/curriculum-form-data.dto';
 
 export class MapperTemplateData {
-  static FromDtoToToDataTemplate(dto: CreateCurriculumVitaeDto): DataTemplate {
+  static FromDtoToToDataTemplate(
+    dto: CurriculumFormDataDto,
+    image: string,
+  ): DataTemplate {
     return {
+      userImg: `data:image/jpeg;base64,${image}`,
       residence: `${dto.residence.city}, ${dto.residence.country}`,
       phoneNumber: /^-?\d+(\.\d+)?$/.test(dto.phoneNumber)
         ? Number(dto.phoneNumber)
