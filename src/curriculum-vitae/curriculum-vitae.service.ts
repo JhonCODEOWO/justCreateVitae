@@ -27,7 +27,7 @@ export class CurriculumVitaeService {
 
     const pdf = await this.pdfService.createPdf<DataTemplate>({
       data: MapperTemplateData.FromDtoToToDataTemplate(
-        createCurriculumVitaeDto,
+        createCurriculumVitaeDto.data,
         srcImg,
       ),
       html: templateHtml,

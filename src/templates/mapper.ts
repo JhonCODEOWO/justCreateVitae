@@ -1,10 +1,11 @@
 import { CreateCurriculumVitaeDto } from 'src/curriculum-vitae/dto/create-curriculum-vitae.dto';
 import { DataTemplate } from './interfaces/DataTemplate.interface';
 import { SocialMediaLinks } from 'src/shared/dtos/social-media-links.dto';
+import { CurriculumFormDataDto } from 'src/curriculum-vitae/dto/curriculum-form-data.dto';
 
 export class MapperTemplateData {
   static FromDtoToToDataTemplate(
-    dto: CreateCurriculumVitaeDto,
+    dto: CurriculumFormDataDto,
     image: string,
   ): DataTemplate {
     return {

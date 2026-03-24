@@ -48,7 +48,7 @@ export class CurriculumVitaeController {
     );
     response.set({
       'Content-Type': 'application/pdf',
-      'Content-Disposition': `attachment; filename=${createCurriculumVitaeDto.fullname}-${Date.now()}.pdf`,
+      'Content-Disposition': `attachment; filename=${createCurriculumVitaeDto.data.fullname}-${Date.now()}.pdf`,
       'Content-Length': buffer.length,
     });
 
