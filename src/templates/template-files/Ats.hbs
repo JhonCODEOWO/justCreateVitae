@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    {{{css}}}
+
+    body {
+        font-family: roboto;
+    }
+
+    @page {
+        margin: 1cm 1.5cm;
+    }
+
+    .divider {
+        margin: 10px 0;
+        height: 2px;
+        width: 100%;
+        background-color: black;
+    }
+
+    h1, h2, h3 {
+        margin: 0;
+        padding: 0;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    h1 {
+        font-size: 24pt;
+    }
+
+    h2 {
+        margin-top: 20px;
+    }
+
+    h2::after {
+        display: block;
+        content: "";
+        height: 1px;
+        width: 100%;
+        background-color: black;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 12pt;
+    }
+
+    .experienceElement {
+        width: 100%;
+        margin: 10px 0;
+        .experienceElement__Title {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+
+    .skillsContainer{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .projectElement{
+        margin: 15px 0;
+    }
+
+    .projectElement:first-child{
+        margin-top: 0;
+    }
+
+    .projectElement:last-child{
+        margin-bottom: 0;
+    }
+</style>
+<body>
+    <section>
+        <h1>{{data.fullname}}</h1>
+        <p>{{data.residence}} | {{data.email}} | {{data.phoneNumber}} | {{data.mainSite}}</p>
+    </section>
+    <div class="divider"></div>
+    <section>
+        <h2>Resumen</h2>
+        <p>{{data.resume}}</p>
+    </section>
+    <section>
+        <h2>Experiencia Profesional</h2>
+        {{#each data.workExperience}}
+            <div class="experienceElement">
+                <div class="experienceElement__Title">
+                    <h3>{{companyName}}</h3>
+                    <h3>{{startDate}} - {{endDate}}</h3>
+                </div>
+                <ul class="experienceElement__Achievements">
+                    {{#each achievements}}
+                        <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+        {{/each}}
+    </section>
+    <section>
+        <h2>Proyectos</h2>
+        <div class="projectsContainer">
+            {{#each data.projects}}
+                <div class="projectElement">
+                    <h3>{{title}}</h3>
+                    <p>{{description}}</p>
+                </div>
+            {{/each}}
+        </div>
+    </section>
+    <section>
+        <h2>Habilidades</h2>
+        <div class="skillsContainer">
+            {{#each data.skills}}
+                <div class="skillElement">
+                    {{name}}
+                </div>
+            {{/each}}
+        </div>
+    </section>
+    <section>
+        <h2>Educación</h2>
+        {{#each data.education}}
+            <div class="educationElement">
+                <div>
+                    <h3>{{institutionName}}</h3>
+                    <p>{{graduationDate}}</p>
+                </div>
+                <p>{{titleName}}</p>
+            </div>
+        {{/each}}
+    </section>
+    <section>
+        <h2>Información adicional</h2>
+
+    </section>
+</body>
+</html>
