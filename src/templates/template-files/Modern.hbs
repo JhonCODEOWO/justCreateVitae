@@ -33,17 +33,18 @@
         }
 
         h1 {
-            font-size: 40px;
+            font-size: 30px;
             font-weight: bold;
             text-transform: uppercase;
             line-height: 1.2;
             letter-spacing: 1px;
+            padding: 0 10px;
         }
 
         
 
         .headerCV{
-            padding: 0 15px;
+            width: 100%;
         }
 
         .contact__info {
@@ -193,6 +194,48 @@
                 height: 20px;
             }
         }
+
+
+        .profile__container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+
+            .userPicture {
+            position: absolute;
+            border-radius: 100%;
+            border: 3px solid white;
+            left: 50%;
+                transform: translateX(-50%);
+                bottom: 10px;
+            }
+
+            .rectangle {
+                position: absolute;
+                height: 68%;
+                width: 220px;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: var(--secondColor);
+            }
+            .circle {
+                position: absolute;
+                width: 220px;
+                height: 220px;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 0;
+                border-radius: 100%;
+                background-color: var(--secondColor);
+            }
+        }
+
+        .absolute-center {
+            top: 50%; /* Moves the top edge to the vertical midpoint of the parent */
+            left: 50%; /* Moves the left edge to the horizontal midpoint of the parent */
+            transform: translate(-50%, -50%);
+        }
     </style>
 </head>
 
@@ -200,6 +243,11 @@
     <div class="flex">
         <aside class="aside">
             <div class="headerCV">
+                <div class="profile__container">
+                    <div class="rectangle absolute-center"></div>
+                    <div class="circle"></div>
+                    <img src={{data.userImg}} alt="" class="userPicture">
+                </div>
                 <h1>{{data.fullname}}</h1>
             </div>
             <h2 class="title title__Aside">Contacto</h2>
