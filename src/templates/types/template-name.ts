@@ -1,1 +1,1 @@
-export type TemplateName = 'Harvard' | 'Modern';
+export type TemplateName = 'Harvard' | 'Modern' | 'Ats';
