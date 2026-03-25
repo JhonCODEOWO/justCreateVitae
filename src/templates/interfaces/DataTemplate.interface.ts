@@ -1,3 +1,6 @@
+/**
+ * A interface that defines how should be the data to incrust in any cv template
+ */
 export interface DataTemplate {
   /**
    * It contains the base64 string to implement in src elements of html.
@@ -7,6 +10,7 @@ export interface DataTemplate {
   phoneNumber: number;
   email: string;
   mainSite?: string;
+  linkedIn: string;
   profesionalLinks: { name: string; link: string }[];
   resume: string;
   workExperience: {

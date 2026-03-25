@@ -1,4 +1,4 @@
-import { IsOptional, IsString, IsUrl, MinLength } from 'class-validator';
+import { IsOptional, IsString, IsUrl } from 'class-validator';
 
 export class SocialMediaLinks {
   @IsUrl()
@@ -18,7 +18,7 @@ export class SocialMediaLinks {
 
   @IsUrl()
   @IsString()
-  linkedIn?: string;
+  linkedIn: string;
 
   @IsUrl()
   @IsString()
