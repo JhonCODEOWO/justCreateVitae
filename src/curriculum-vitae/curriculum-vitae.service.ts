@@ -29,11 +29,13 @@ export class CurriculumVitaeService {
       picture.buffer,
     );
 
+    const dataTemplate = MapperTemplateData.FromDtoToToDataTemplate(
+      createCurriculumVitaeDto.data,
+      modifiedPicture.toString('base64'),
+    );
+
     const pdf = await this.pdfService.createPdf<DataTemplate>({
-      data: MapperTemplateData.FromDtoToToDataTemplate(
-        createCurriculumVitaeDto.data,
-        modifiedPicture.toString('base64'),
-      ),
+      data: dataTemplate,
       html: templateHtml,
       css: globalCss,
     });
