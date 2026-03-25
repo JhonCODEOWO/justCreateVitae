@@ -43,7 +43,7 @@
     h2::after {
         display: block;
         content: "";
-        height: 1px;
+        height: .5px;
         width: 100%;
         background-color: black;
         margin-bottom: 10px;
@@ -78,11 +78,20 @@
     .projectElement:last-child{
         margin-bottom: 0;
     }
+
+    a{
+        text-decoration: none;
+        color: black;
+    }
+
+    .educationElement {
+        margin: 5px 0;
+    }
 </style>
 <body>
     <section>
         <h1>{{data.fullname}}</h1>
-        <p>{{data.residence}} | {{data.email}} | {{data.phoneNumber}} | {{data.mainSite}}</p>
+        <p>{{data.residence}} | <a href="mailto:{{data.email}}">{{data.email}}</a> | {{data.phoneNumber}} | <a href={{data.mainSite}}>{{data.mainSite}}</a></p>
     </section>
     <div class="divider"></div>
     <section>
