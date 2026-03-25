@@ -5,9 +5,16 @@ import { CurriculumVitaeModule } from './curriculum-vitae/curriculum-vitae.modul
 import { SharedModule } from './shared/shared.module';
 import { TemplatesModule } from './templates/templates.module';
 import { PdfModule } from './pdf/pdf.module';
+import { ImageManagementModule } from './image-management/image-management.module';
 
 @Module({
-  imports: [CurriculumVitaeModule, SharedModule, TemplatesModule, PdfModule],
+  imports: [
+    CurriculumVitaeModule,
+    SharedModule,
+    TemplatesModule,
+    PdfModule,
+    ImageManagementModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
