@@ -110,12 +110,12 @@
         <h3 class="text-center margin-0 padding-0 contact__info">{{data.email}} - {{data.phoneNumber}} - {{data.residence}}</h3>
     </div>
     <section class="sectionSpacing">
-        <h2 class="subtitle">Perfil Profesional</h2>
+        <h2 class="subtitle">{{data.t.summary}}</h2>
         <p class="resume">{{data.resume}}</p>
     </section>
 
     <section class="sectionSpacing">
-        <h2 class="subtitle">Experiencia</h2>
+        <h2 class="subtitle">{{data.t.workExperience}}</h2>
         {{#each data.workExperience}}
             <div class="mainElement">
                 <div class="titleWithDateInfo">
@@ -142,7 +142,7 @@
     </section>
     
     <section class="sectionSpacing">
-        <h2 class="subtitle">Estudios</h2>
+        <h2 class="subtitle">{{data.t.education}}</h2>
         {{#each data.education}}
         <div class="mainElement">
             <div class="titleWithDateInfo">
@@ -159,7 +159,7 @@
     
     {{#if data.projects}}
         <section class="sectionSpacing">
-            <h2 class="subtitle">Proyectos destacables</h2>
+            <h2 class="subtitle">{{data.t.projects}}</h2>
             <div class="grid grid-cols-4">
                 {{#each data.projects}}
                     <div class="">
@@ -175,7 +175,7 @@
         </section>
     {{/if}}
     {{#if data.languages}}
-        <h2 class="subtitle">Lenguas</h2>
+        <h2 class="subtitle">{{data.t.languages}}</h2>
         <ul>
             {{#each data.languages}}
                 <li>

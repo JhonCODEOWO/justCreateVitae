@@ -95,11 +95,11 @@
     </section>
     <div class="divider"></div>
     <section>
-        <h2>Resumen</h2>
+        <h2>{{data.t.summary}}</h2>
         <p>{{data.resume}}</p>
     </section>
     <section>
-        <h2>Experiencia Profesional</h2>
+        <h2>{{data.t.workExperience}}</h2>
         {{#each data.workExperience}}
             <div class="experienceElement">
                 <div class="experienceElement__Title">
@@ -115,7 +115,7 @@
         {{/each}}
     </section>
     <section>
-        <h2>Proyectos</h2>
+        <h2>{{data.t.projects}}</h2>
         <div class="projectsContainer">
             {{#each data.projects}}
                 <div class="projectElement">
@@ -126,7 +126,7 @@
         </div>
     </section>
     <section>
-        <h2>Habilidades</h2>
+        <h2>{{data.t.skills}}</h2>
         <div class="skillsContainer">
             {{#each data.skills}}
                 <div class="skillElement">
@@ -136,7 +136,7 @@
         </div>
     </section>
     <section>
-        <h2>Educación</h2>
+        <h2>{{data.t.education}}</h2>
         {{#each data.education}}
             <div class="educationElement">
                 <div>
@@ -148,8 +148,6 @@
         {{/each}}
     </section>
     <section>
-        <h2>Información adicional</h2>
-
     </section>
 </body>
 </html>

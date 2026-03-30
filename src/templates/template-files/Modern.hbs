@@ -250,7 +250,7 @@
                 </div>
                 <h1>{{data.fullname}}</h1>
             </div>
-            <h2 class="title title__Aside">Contacto</h2>
+            <h2 class="title title__Aside">{{data.t.contact}}</h2>
             <section>
                 <div class="contactElement">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="contactElement__icon">
@@ -278,7 +278,7 @@
                     <p>{{data.residence}}, {{data.country}}</p>
                 </div>
             </section>
-            <h2 class="title title__Aside">Habilidades</h2>
+            <h2 class="title title__Aside">{{data.t.skills}}</h2>
             <section>
                 <ul>
                     {{#each data.skills}}
@@ -291,7 +291,7 @@
                     {{/each}}
                 </ul>
             </section>
-            <h2 class="title title__Aside">Idiomas</h2>
+            <h2 class="title title__Aside">{{data.t.languages}}</h2>
             <section>
                 <ul>
                     {{#each data.languages}}
@@ -305,11 +305,11 @@
         </aside>
         <main>
             <section class="profesionalResume">
-                <h2>Perfil Profesional</h2>
+                <h2>{{data.t.summary}}</h2>
                 <p class="resume">{{data.resume}}</p>
             </section>
             <section>
-                <h2 class="title__Main">Estudios</h2>
+                <h2 class="title__Main">{{data.t.education}}</h2>
                 {{#each data.education}}
                     <div class="educationElement">
                         <p class="educationElement__date">{{graduationDate}}</p>
@@ -318,7 +318,7 @@
                 {{/each}}
             </section>
             <section>
-                <h2 class="title__Main">Experiencia laboral</h2>
+                <h2 class="title__Main">{{data.t.workExperience}}</h2>
                 {{#each data.workExperience}}
                     <div class="workElement">
                         <div class="flex gap-column-sm">
