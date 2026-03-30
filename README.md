@@ -7,11 +7,6 @@
 
 Instead of worrying about formatting, you only need to send structured content — the API handles the layout and generates a ready-to-share PDF.
 
----
-
-## 📦 Incoming changes
-Now this project can create successfully PDFs in two formats, but don't worry, a new templates will arrive soon.
-
 ## Why use JustCreateVitae?
 
 Creating a well-formatted CV can be time-consuming.  
@@ -21,8 +16,10 @@ JustCreateVitae simplifies the process by:
 - Generating a professional layout
 - Returning a ready-to-download PDF
 - Allowing you to focus only on the content
+- Allowing you to generate a multi-language templates.
 
 ---
+
 
 ## 🛠️ Installation
 
