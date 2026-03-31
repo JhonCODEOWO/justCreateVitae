@@ -1,5 +1,7 @@
 import { DictionaryElement } from '../interfaces/Dictionary.interface';
 
+//TODO: MOVE ALL THIS FILE TO A DEDICATED i18n MODULE.
+
 export type Lang = 'es' | 'en';
 
 /**

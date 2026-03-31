@@ -1,6 +1,18 @@
 import { DataTemplate } from './interfaces/DataTemplate.interface';
 import { SocialMediaLinks } from 'src/shared/dtos/social-media-links.dto';
 import { CurriculumFormDataDto } from 'src/curriculum-vitae/dto/curriculum-form-data.dto';
+import { formattedDate } from 'src/utils/date.utils';
+import { Lang } from 'src/curriculum-vitae/language/Translations';
+
+//TODO: MOVE THIS TO A DEDICATED MODULE i18n
+const wordsDictionary: Record<Lang, Record<string, string>> = {
+  es: {
+    actually: 'Actualmente',
+  },
+  en: {
+    actually: 'Present',
+  },
+};
 
 export class MapperTemplateData {
   /**
@@ -12,7 +24,10 @@ export class MapperTemplateData {
   static FromDtoToToDataTemplate(
     dto: CurriculumFormDataDto,
     image: string,
+    lang: Lang = 'es',
   ): DataTemplate {
+    const translations = wordsDictionary[lang];
+
     return {
       linkedIn: dto.profesionalLinks?.linkedIn ?? '',
       userImg: `data:image/jpeg;base64,${image}`,
@@ -50,9 +65,12 @@ export class MapperTemplateData {
         }) => ({
           achievements,
           occupation,
-          startDate,
+          startDate: formattedDate(startDate, { lang: lang }),
           companyName,
-          endDate,
+          endDate:
+            !endDate || endDate.length === 0
+              ? translations.actually
+              : formattedDate(endDate, { lang: lang }),
         }),
       ),
     };
@@ -83,5 +101,28 @@ export class MapperTemplateData {
     const safeValue = Math.max(0, Math.min(levelValue, 5));
     const percentValue = (safeValue * 100) / 5;
     return percentValue;
+  }
+
+  /**
+   * Check two dates range and generate a string to show it in a nice format to the cv info.
+   * @param date1 Start date to use.
+   * @param date2 End date to validate, if is undefined or its length is 0 then is a present date.
+   * @param opts Options to apply in the generated string
+   * @returns A nice string including the two dates if is possible otherwise it will return a string with only one date and the word indicating that the ranges stills continue with the translation.
+   */
+  static checkTwoDates(
+    date1: string,
+    date2?: string,
+    opts?: { lang: Lang },
+  ): string {
+    const lang = opts?.lang ?? 'es';
+    const formattedDate1 = formattedDate(date1);
+
+    if (!date2 || date2.length === 0)
+      return `${formattedDate1} - ${wordsDictionary[lang].actually}`;
+
+    const formattedDate2 = formattedDate(date2);
+
+    return `${formattedDate1} - ${formattedDate2}`;
   }
 }

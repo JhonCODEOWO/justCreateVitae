@@ -6,6 +6,7 @@ import { SharedModule } from './shared/shared.module';
 import { TemplatesModule } from './templates/templates.module';
 import { PdfModule } from './pdf/pdf.module';
 import { ImageManagementModule } from './image-management/image-management.module';
+import { UtilsModule } from './utils/utils.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { ImageManagementModule } from './image-management/image-management.modul
     TemplatesModule,
     PdfModule,
     ImageManagementModule,
+    UtilsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

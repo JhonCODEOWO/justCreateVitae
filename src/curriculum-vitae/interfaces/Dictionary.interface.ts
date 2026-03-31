@@ -1,3 +1,4 @@
+//TODO: MOVE THIS TO A DEDICATED MODULE i18n
 export interface DictionaryElement {
   summary: string;
   workExperience: string;

@@ -37,6 +37,7 @@ export class CurriculumVitaeService {
     const dataTemplate = MapperTemplateData.FromDtoToToDataTemplate(
       createCurriculumVitaeDto.data,
       modifiedPicture.toString('base64'),
+      lang,
     );
 
     const pdf = await this.pdfService.createPdf<CurriculumVitaeTemplateData>({
