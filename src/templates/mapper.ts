@@ -26,8 +26,6 @@ export class MapperTemplateData {
     image: string,
     lang: Lang = 'es',
   ): DataTemplate {
-    const translations = wordsDictionary[lang];
-
     return {
       linkedIn: dto.profesionalLinks?.linkedIn ?? '',
       userImg: `data:image/jpeg;base64,${image}`,
@@ -47,7 +45,10 @@ export class MapperTemplateData {
       education: dto.education.map((edu) => ({
         institutionName: edu.institutionName,
         titleName: edu.titleName,
-        graduationDate: edu.graduationDate,
+        graduationDate: formattedDate(edu.graduationDate, {
+          format: 'short',
+          lang: lang,
+        }),
         type: edu.type,
       })),
       email: dto.email,
@@ -65,12 +66,8 @@ export class MapperTemplateData {
         }) => ({
           achievements,
           occupation,
-          startDate: formattedDate(startDate, { lang: lang }),
+          rangeDate: this.checkTwoDates(startDate, endDate, { lang: lang }),
           companyName,
-          endDate:
-            !endDate || endDate.length === 0
-              ? translations.actually
-              : formattedDate(endDate, { lang: lang }),
         }),
       ),
     };

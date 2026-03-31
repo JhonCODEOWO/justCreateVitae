@@ -16,8 +16,7 @@ export interface DataTemplate {
   workExperience: {
     companyName: string;
     occupation: string;
-    startDate: string;
-    endDate?: string;
+    rangeDate: string;
     achievements: string[];
   }[];
   education: {
