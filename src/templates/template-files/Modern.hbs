@@ -16,8 +16,19 @@
             --asideFontColor: #2b2b2b
         }
 
-        main > section {
+        main {
+            h2 {
+                margin: 0 0 10px 0;
+                padding: 0;
+            }
+        }
+
+        main section:first-child {
             padding: 20px;
+        }
+
+        main > section {
+            padding: 10px 20px;
         }
 
         body {
@@ -25,7 +36,7 @@
         }
 
         a {
-            color: black;
+            color: var(--asideFontColor);
         }
 
         ul {
@@ -111,11 +122,12 @@
         }
 
         aside > section {
-            padding: 0 20px;
+            padding: 10px 18px;
         }
 
         .title {
             padding: 10px;
+            margin: 0;
         }
 
         .title__Aside {
@@ -131,16 +143,30 @@
         }
 
         .skill {
-            align-items: center;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            display: flex;
             justify-content: space-between;
-            column-gap: 20px;
+            align-items: center;
+            column-gap: 10px;
+
+            p {
+                margin: 0;
+                padding:  0;
+                flex: 1;
+            }
+
+            .skill__bar{
+                width: 100px;
+            }
+        }
+
+        .educationElement:first-of-type{
+            margin-top: 0;
         }
 
         .educationElement {
             display: flex;
             column-gap: 15px;
+            margin: 5px 0;
 
             .educationElement__date {
                 font-weight: normal;
@@ -150,15 +176,29 @@
                 font-weight: bolder;
                 font-size: medium;
             }
+
+            p {
+                margin: 0;
+            }
         }
 
+        .workElement:first-of-type {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
         .workElement {
+            margin: 15px 0;
+            p {
+                margin: 0;
+            }
             .workElement__date{
                 
             }
 
             .workElement__info{
-                
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 5px;
             }
 
             .workElement__achievements{
@@ -169,6 +209,11 @@
         .languageElement {
             display: flex;
             justify-content: space-between;
+
+            p {
+                margin: 0;
+                padding: 0;
+            }
         }
 
         .progress {
@@ -188,10 +233,16 @@
             display: flex;
             align-items: center;
             column-gap: 10px;
+            padding: 5px 0;
 
             .contactElement__icon {
                 width: 20px;
                 height: 20px;
+            }
+
+            p {
+                padding: 0;
+                margin: 0;
             }
         }
 
@@ -284,7 +335,7 @@
                     {{#each data.skills}}
                         <div class="skill">
                             <p>{{name}}</p>
-                            <div class="progress">
+                            <div class="progress skill__bar">
                                 <div style="width: {{level}}%;" class="progress__value"></div>
                             </div>
                         </div>
@@ -321,7 +372,7 @@
                 <h2 class="title__Main">{{data.t.workExperience}}</h2>
                 {{#each data.workExperience}}
                     <div class="workElement">
-                        <div class="flex gap-column-sm">
+                        <div class="flex gap-column-sm workElement__info">
                             <p class="workElement__date">{{rangeDate}}</p>
                             <p class="workElement__companyName bold">{{companyName}}</p>
                         </div>
