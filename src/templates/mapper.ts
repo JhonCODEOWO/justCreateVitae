@@ -1,8 +1,8 @@
 import { DataTemplate } from './interfaces/DataTemplate.interface';
 import { SocialMediaLinks } from 'src/shared/dtos/social-media-links.dto';
 import { CurriculumFormDataDto } from 'src/curriculum-vitae/dto/curriculum-form-data.dto';
-import { formattedDate } from 'src/utils/date.utils';
-import { Lang } from 'src/curriculum-vitae/language/Translations';
+import { formattedDate } from 'src/utils/format-dates/date.utils';
+import { Lang } from 'src/translations/types/lang.type';
 
 //TODO: MOVE THIS TO A DEDICATED MODULE i18n
 const wordsDictionary: Record<Lang, Record<string, string>> = {
@@ -113,12 +113,12 @@ export class MapperTemplateData {
     opts?: { lang: Lang },
   ): string {
     const lang = opts?.lang ?? 'es';
-    const formattedDate1 = formattedDate(date1);
+    const formattedDate1 = formattedDate(date1, { lang });
 
     if (!date2 || date2.length === 0)
       return `${formattedDate1} - ${wordsDictionary[lang].actually}`;
 
-    const formattedDate2 = formattedDate(date2);
+    const formattedDate2 = formattedDate(date2, { lang });
 
     return `${formattedDate1} - ${formattedDate2}`;
   }

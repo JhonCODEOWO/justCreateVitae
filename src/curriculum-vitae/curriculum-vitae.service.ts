@@ -5,8 +5,7 @@ import { TemplatesService } from 'src/templates/templates.service';
 import { PdfService } from 'src/pdf/pdf.service';
 import { CreateCurriculumQueryParamsDto } from './dto/QueryParams.dto';
 import { ImageManagementService } from 'src/image-management/image-management.service';
-import { Lang, translations } from './language/Translations';
-import { DictionaryElement } from './interfaces/Dictionary.interface';
+import { getCurriculumTranslatedElement } from '../translations/dictionaries/CurriculumStructureDictionary';
 import { CurriculumVitaeTemplateData } from './interfaces/CurriculumVitaeTemplateData';
 
 @Injectable()
@@ -26,8 +25,8 @@ export class CurriculumVitaeService {
     const templateHtml = this.templateService.getTemplate(type);
     const globalCss = this.templateService.getCss('GlobalStyles');
 
-    //Make translations
-    const estructuralWordsTranslates = this.getSectionsTranslates(lang);
+    //Take translations
+    const estructuralWordsTranslates = getCurriculumTranslatedElement(lang);
 
     //Transform image to square size
     const modifiedPicture = await this.imageService.toAvatarSize(
@@ -50,15 +49,5 @@ export class CurriculumVitaeService {
     });
 
     return pdf;
-  }
-
-  /**
-   * Retrieves section titles that are able to use in templates.
-   * @param lan A existing language key in the dictionary.
-   * @returns A object with every section and its translation
-   */
-  getSectionsTranslates(lan?: Lang): DictionaryElement {
-    if (!lan) return translations['es'];
-    return translations[lan];
   }
 }

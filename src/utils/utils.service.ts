@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { FormattedDateOptions } from './interfaces/FormattedDateOptions.interface';
+import { FormattedDateOptions } from './format-dates/interfaces/FormattedDateOptions.interface';
 
 @Injectable()
 export class UtilsService {

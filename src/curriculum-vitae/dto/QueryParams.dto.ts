@@ -1,6 +1,6 @@
 import { IsIn, IsOptional, IsString } from 'class-validator';
 import { type TemplateName } from 'src/templates/types/template-name';
-import { type Lang } from '../language/Translations';
+import { type Lang } from 'src/translations/types/lang.type';
 
 export class CreateCurriculumQueryParamsDto {
   @IsIn(['Modern', 'Harvard', 'Ats'])

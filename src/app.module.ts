@@ -7,6 +7,7 @@ import { TemplatesModule } from './templates/templates.module';
 import { PdfModule } from './pdf/pdf.module';
 import { ImageManagementModule } from './image-management/image-management.module';
 import { UtilsModule } from './utils/utils.module';
+import { TranslationsModule } from './translations/translations.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { UtilsModule } from './utils/utils.module';
     PdfModule,
     ImageManagementModule,
     UtilsModule,
+    TranslationsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

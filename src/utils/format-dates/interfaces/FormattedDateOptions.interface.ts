@@ -1,4 +1,4 @@
-import { Lang } from 'src/curriculum-vitae/language/Translations';
+import { Lang } from 'src/translations/types/lang.type';
 
 export type FormatDateType = 'long' | 'short';
 
