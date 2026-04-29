@@ -16,6 +16,7 @@ export const CurriculumStructureDictionary: Record<
     languages: 'Idiomas',
     projects: 'Proyectos',
     skills: 'Habilidades',
+    certifications: 'Certificaciones',
   },
   en: {
     summary: 'Summary',
@@ -25,6 +26,7 @@ export const CurriculumStructureDictionary: Record<
     languages: 'Languages',
     projects: 'Projects',
     skills: 'Skills',
+    certifications: 'Certifications',
   },
 };
 

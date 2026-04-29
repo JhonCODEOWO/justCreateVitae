@@ -9,4 +9,5 @@ export interface CurriculumSectionsTranslated {
   education: string;
   languages: string;
   contact: string;
+  certifications: string;
 }
