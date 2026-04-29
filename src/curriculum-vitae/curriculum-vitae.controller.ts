@@ -12,6 +12,7 @@ import {
 } from '@nestjs/common';
 import { CurriculumVitaeService } from './curriculum-vitae.service';
 import { CreateCurriculumVitaeDto } from './dto/create-curriculum-vitae.dto';
+import 'multer';
 import type { Response } from 'express';
 import { CreateCurriculumQueryParamsDto } from './dto/QueryParams.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
