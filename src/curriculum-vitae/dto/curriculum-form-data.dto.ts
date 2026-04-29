@@ -64,6 +64,7 @@ export class CurriculumFormDataDto {
   })
   @IsArray()
   @IsOptional()
+  @ArrayMinSize(1)
   @Type(() => SkillDto)
   skills?: SkillDto[];
 
@@ -72,11 +73,13 @@ export class CurriculumFormDataDto {
     message: 'will be a valid object of language information',
   })
   @IsOptional()
+  @ArrayMinSize(1)
   @IsArray()
   @Type(() => LanguageDTO)
   languages?: LanguageDTO[];
 
   @ValidateNested({ each: true })
+  @ArrayMinSize(1)
   @IsOptional()
   @IsArray()
   @Type(() => ProjectDTO)
@@ -84,6 +87,7 @@ export class CurriculumFormDataDto {
 
   @ValidateNested({ each: true })
   @Type(() => CertificationDTO)
+  @ArrayMinSize(1)
   @IsArray()
   @IsOptional()
   certifications?: CertificationDTO[];

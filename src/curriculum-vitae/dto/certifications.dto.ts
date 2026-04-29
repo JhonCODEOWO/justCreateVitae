@@ -1,4 +1,4 @@
-import { IsString } from 'class-validator';
+import { IsDate, IsOptional, IsString } from 'class-validator';
 
 export class CertificationDTO {
   @IsString()
@@ -8,5 +8,6 @@ export class CertificationDTO {
   institution: string;
 
   @IsString()
+  @IsOptional()
   year?: string;
 }
