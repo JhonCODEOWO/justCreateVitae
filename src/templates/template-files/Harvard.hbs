@@ -30,32 +30,44 @@
             margin: 40px 0;
             display: flex;
             flex-direction: column;
+
+            h1 {
+                font-size: 35px;
+            }
         }
 
         .contact__info {
+            font-weight: lighter;
             font-size: 16px;
         }
 
         @page{
             size: A4;
-            margin: 20mm;
+            margin: 10mm;
         }
 
 
         .subtitle {
-            text-align: center;
-            font-size: 14px;
             font-weight: bold;
             width: 100%;
             text-transform: uppercase;
+        }
+
+        .subtitle.subtitle-1 {
+            font-size: 16px;
+        }
+
+        .subtitle.subtitle-2 {
+            font-size: 12px;
         }
 
         .subtitle.underlined::after {
             height: 1px;
             width: 100%;
             display: block;
+            margin-top: 4px;
             content: "";
-            background-color: black;
+            background-color: gray;
         }
 
         .resume {
@@ -82,7 +94,6 @@
         }
 
         .titleWithDateInfo .subtitle {
-            font-size: 12px;
             text-align: left;
             font-weight: bold;
         }
@@ -93,6 +104,11 @@
 
         .grid {
             display: grid;
+        }
+
+        .grid-cols-3 {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
         }
 
         .grid-cols-4 {
@@ -112,17 +128,17 @@
         <h3 class="text-center margin-0 padding-0 contact__info">{{data.email}} - {{data.phoneNumber}} - {{data.residence}}</h3>
     </div>
     <section class="sectionSpacing">
-        <h2 class="subtitle underlined">{{data.t.summary}}</h2>
+        <h2 class="subtitle subtitle-1 underlined">{{data.t.summary}}</h2>
         <p class="resume">{{data.resume}}</p>
     </section>
 
     <section class="sectionSpacing">
-        <h2 class="subtitle underlined">{{data.t.workExperience}}</h2>
+        <h2 class="subtitle subtitle-1 underlined">{{data.t.workExperience}}</h2>
         {{#each data.workExperience}}
             <div class="mainElement">
                 <div class="titleWithDateInfo">
                     <div>
-                        <h2 class="subtitle margin-0">{{companyName}}</h2>
+                        <h2 class="subtitle subtitle-2 margin-0">{{companyName}}</h2>
                         <p class="margin-0">{{occupation}}</p>
                     </div>
                     <div>
@@ -141,14 +157,14 @@
             </div>
         {{/each}}
     </section>
-    
+
     <section class="sectionSpacing">
-        <h2 class="subtitle underlined">{{data.t.education}}</h2>
+        <h2 class="subtitle subtitle-1 underlined">{{data.t.education}}</h2>
         {{#each data.education}}
         <div class="mainElement">
             <div class="titleWithDateInfo">
                 <div>
-                    <h2 class="subtitle margin-0 padding-0">{{institutionName}}</h2>
+                    <h2 class="subtitle subtitle-2 margin-0 padding-0">{{institutionName}}</h2>
                     <p class="margin-0 padding-0">{{titleName}}</p>
                     <p class="margin-0 padding-0">{{type}}</p>
                 </div>
@@ -157,33 +173,59 @@
         </div>
         {{/each}}
     </section>
+
+    {{#if data.certifications}}
+        <section class="sectionSpacing">
+        <h2 class="subtitle subtitle-1 underlined">{{data.t.certifications}}</h2>
+            {{#each data.certifications}}
+                <div class="mainElement">
+                    <div class="titleWithDateInfo">
+                        <div>
+                            <h2 class="subtitle subtitle-2 margin-0 padding-0">{{name}}</h2>
+                            <p class="margin-0 padding-0">{{institution}}</p>
+                        </div>
+                        <p>{{year}}</p>
+                    </div>
+                </div>
+            {{/each}}
+        </section>
+    {{/if}}
     
     {{#if data.projects}}
         <section class="sectionSpacing">
-            <h2 class="subtitle underlined">{{data.t.projects}}</h2>
-            <div class="grid grid-cols-4">
+            <h2 class="subtitle subtitle-1 underlined">{{data.t.projects}}</h2>
+            <div class="">
                 {{#each data.projects}}
-                    <div class="">
-                        {{#if link}}
-                            <a href={{link}}>{{title}}</a>
-                        {{else}}
-                            <h2 class="subtitle">{{title}}</h2>
-                        {{/if}}
-                        <p>{{description}}</p>
+                    <div class="mainElement">
+                        <h2 class="subtitle subtitle-2 margin-0 padding-0">{{title}}</h2>
+                        <p style="text-align: justify;" class="margin-0 padding-0">{{description}}</p>
                     </div>
                 {{/each}}
             </div>
         </section>
     {{/if}}
+
     {{#if data.languages}}
-        <h2 class="subtitle underlined">{{data.t.languages}}</h2>
-        <ul>
+        <h2 class="subtitle subtitle-1 underlined">{{data.t.languages}}</h2>
+        <ul class="grid grid-cols-4">
             {{#each data.languages}}
                 <li>
                     {{name}} - {{level}}
                 </li>
             {{/each}}
         </ul>
+    {{/if}}
+
+    {{#if data.skills}}
+        <section class="sectionSpacing">
+            <h2 class="subtitle subtitle-1 underlined">{{data.t.skills}}</h2>
+                <div class="grid grid-cols-4">
+                    {{#each data.skills}}
+                        <p>{{name}}</p>
+                    {{/each}}
+                </div>
+            </div>
+        </section>
     {{/if}}
 </body>
 
