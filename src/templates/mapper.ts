@@ -35,13 +35,19 @@ export class MapperTemplateData {
         : 0,
       resume: dto.resume,
       mainSite: dto.profesionalLinks?.portfolioWeb,
-      languages: dto.languages ?? [],
-      projects: dto.projects ?? [],
+      languages: dto.languages ?? undefined,
+      projects: dto.projects ?? undefined,
       skills:
         dto.skills?.map((skill) => ({
           name: skill.name,
           level: this.generateLevelPercent(skill.level),
-        })) ?? [],
+        })) ?? undefined,
+      certifications:
+        dto.certifications?.map(({ institution, name, year }) => ({
+          institution,
+          name,
+          year: !year ? wordsDictionary[lang].actually : year,
+        })) ?? undefined,
       education: dto.education.map((edu) => ({
         institutionName: edu.institutionName,
         titleName: edu.titleName,
