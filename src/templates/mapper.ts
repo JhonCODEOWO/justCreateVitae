@@ -34,7 +34,7 @@ export class MapperTemplateData {
         ? Number(dto.phoneNumber)
         : 0,
       resume: dto.resume,
-      mainSite: dto.profesionalLinks?.portfolioWeb,
+      mainSite: dto.profesionalLinks?.portfolioWeb ?? undefined,
       languages: dto.languages ?? undefined,
       projects: dto.projects ?? undefined,
       skills:
@@ -46,13 +46,15 @@ export class MapperTemplateData {
         dto.certifications?.map(({ institution, name, year }) => ({
           institution,
           name,
-          year: !year ? wordsDictionary[lang].actually : year,
+          year: !year
+            ? wordsDictionary[lang].actually
+            : formattedDate(year, { format: 'long', lang }),
         })) ?? undefined,
       education: dto.education.map((edu) => ({
         institutionName: edu.institutionName,
         titleName: edu.titleName,
         graduationDate: formattedDate(edu.graduationDate, {
-          format: 'short',
+          format: 'long',
           lang: lang,
         }),
         type: edu.type,
